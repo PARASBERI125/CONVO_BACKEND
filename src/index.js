@@ -21,13 +21,13 @@ app.use("/api/message", messagerouter);
 
 const port = process.env.PORT || 3000;
 const __dirname = path.resolve();
-if (process.env.NODE_ENV === "production") {
+/*if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
   app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
   });
-}
+}*/
 server.listen(port, () => {
   console.log(`Server listening on port ${port}`);
   connectDb(process.env.MONGODB_URL);

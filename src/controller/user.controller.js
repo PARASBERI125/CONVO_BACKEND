@@ -54,6 +54,7 @@ export const registerUser = async (req, res) => {
       httpOnly: true, //not accessible by javascript
       sameSite: "none",
       secure: true,
+      domain: ".convochat.fun"
     });
     return res
       .status(200)
@@ -84,6 +85,7 @@ export const loginUser = async (req, res) => {
       httpOnly: true, //not accessible by javascript
       sameSite: "none",
       secure: true,
+      domain: ".convochat.fun"
     });
 
     return res.status(200).json({ message: "Login successful", ...user._doc });

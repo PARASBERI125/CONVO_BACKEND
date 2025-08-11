@@ -53,7 +53,7 @@ export const registerUser = async (req, res) => {
       maxAge: 1000 * 60 * 60 * 24 * 1,
       httpOnly: true, //not accessible by javascript
       sameSite: "none",
-      secure: process.env.NODE_ENV !== "development",
+      secure: true,
     });
     return res
       .status(200)
@@ -83,7 +83,7 @@ export const loginUser = async (req, res) => {
       maxAge: 1000 * 60 * 60 * 24 * 30,
       httpOnly: true, //not accessible by javascript
       sameSite: "none",
-      secure: process.env.NODE_ENV !== "development",
+      secure: true,
     });
 
     return res.status(200).json({ message: "Login successful", ...user._doc });

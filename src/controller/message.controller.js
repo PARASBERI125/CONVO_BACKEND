@@ -58,6 +58,11 @@ export const sendMessages = async (req, res) => {
     const receiversocketid = getReceiverSocketId(receiverId);
     if (receiversocketid) {
       io.to(receiversocketid).emit("NewMessage", messages);
+      io.to(receiversocketid).emit("ContactsUpdated");
+    }
+    const senderSocketId = getReceiverSocketId(myId);
+    if (senderSocketId) {
+      io.to(senderSocketId).emit("contactsUpdated");
     }
     await User.findByIdAndUpdate(myId, {
       $addToSet: { contacts: receiverId },
